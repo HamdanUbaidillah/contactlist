@@ -13,7 +13,7 @@ const Form = () => {
   // fetch data
     axios({
       method: "get",
-      url : "http://localhost:3000/contact"
+      url : `${process.env.REACT_APP_BASEURL}`
     }).then(res => {
       setContact(res.data ?? [])
     })
@@ -45,7 +45,7 @@ const Form = () => {
         }
       })
 
-      axios.put(`http://localhost:3000/contact/${isUpdate.id}`, {
+      axios.put(`${process.env.REACT_APP_BASEURL}/${isUpdate.id}`, {
         name: formData.name,
         telp: formData.telp
       })
@@ -55,7 +55,7 @@ const Form = () => {
       data.push(newData)
       axios({
         method: "post",
-        url: "http://localhost:3000/contact",
+        url: `${process.env.REACT_APP_BASEURL}`,
         data: {newData}
       })
     } 
@@ -76,14 +76,14 @@ const Form = () => {
     let filterData = data.filter(contact => contact.id !== id)
     axios({
       method: "delete",
-      url :`http://localhost:3000/contact/${id}`,
+      url :`${process.env.REACT_APP_BASEURL}/${id}`,
     })
     setContact(filterData)
   }
 
   return (
-    <section className="bg-white border border-gray-300 p-11 rounded-lg">
-      <h1 className="font-semibold text-3xl mb-3">Contact list react practice</h1>
+    <section className="bg-white border md:w-1/4 border-gray-300 p-11 rounded-lg">
+      <h1 className="font-semibold text-3xl mb-3 text-center">Contact list react</h1>
       <section>
         <form onSubmit={handleSubmit} action="contact">
           <section className="flex flex-col gap-3">

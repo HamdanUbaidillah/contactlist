@@ -1,3 +1,9 @@
 {
-  "contact": []
+  "contact": [
+    {
+      "name": "Joko Widodo",
+      "telp": "08950405896",
+      "id": 1
+    }
+  ]
 }
